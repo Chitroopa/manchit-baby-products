@@ -21,4 +21,4 @@
 # Ignore all paperClip images
 
 /public/system/images/*
-/public/system/reviews/*
+/public/system/reviewscarts_controller.rb/*

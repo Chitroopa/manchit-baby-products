@@ -27,6 +27,21 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
 
+  config.model 'Product' do
+
+      exclude_fields :order_items, :reviews, :avg_rating
+
+      create do
+        field :category, :enum do
+          help 'Please select category'
+          enum do
+            ['Accessories', 'Formula', 'Cookies','Tea','Mix','Gluten Free', 'Latch', 'Pacifiers', 'Cleaning', 'Warmer', 'Go', 'Cups', 'Utensils', 'Tableware', 'Snacking', 'Fresh', 'Bibs', 'Booster', 'Gates', 'Extensions', 'Child Proofing', 'Spare Parts', 'Pails & Refills', 'Changing', 'Training', 'Tubs & Rinsers', 'Toys', 'Organization', 'Safety', 'Mirror', 'Shades', 'Car', 'Stollers', 'Nursery Organizer', 'Sleep', 'Diapering', 'Health', 'Baskets', 'Bundles', 'Apparel' ]
+          end
+        end
+      end
+
+  end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
