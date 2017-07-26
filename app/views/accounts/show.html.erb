@@ -1,2 +1,44 @@
-<h1>Accounts#show</h1>
-<p>Find me in app/views/accounts/show.html.erb</p>
+<h1>Your order history</h1>
+<table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Order #</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Total Price</th>
+                <th>Number of items</th>
+            </tr>
+        </thead>
+    <% if @account_history.any? %>
+
+      <% @account_history.each do |order| %>
+      <tbody>
+        <td><%= order.id %></td>
+        <td><%= order.created_at%></td>
+        <td><%= order.status%></td>
+        <td><%= number_to_currency order.total_price %></td>
+      </tbody>
+      <% end %>
+    <% end %>
+</table>
+<% if @account_history.any? %>
+
+  <% @account_history.each do |order| %>
+  <div class="well">
+    <h2>Order number :<%= order.id %></h2>
+    <h4>Status: <%= order.status %> | Date: <%= order.created_at%></h4>
+    <% order.order_items.each do |item| %>
+      <div class="well">
+        <h4><%= item.product.name %> </h4>
+        <p ><%= image_tag item.product.images[0].image.url(:thumb) %></p>
+        <p> Unit Price: <%= number_to_currency item.product.price %> | Quantity: <%= item.quantity %> | Total Price: <%= number_to_currency (item.product.price * item.quantity) %></p>
+      </div>
+    <% end %>
+    <h3 style="text-align: right">Your Total: <b><%= number_to_currency order.total_price %></b></h3>
+  </div>
+  <% end %>
+<% else %>
+  <p>
+    You don't have any order history
+  </p>
+<% end %>
