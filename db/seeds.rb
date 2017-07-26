@@ -10,6 +10,8 @@ Product.destroy_all
 Image.destroy_all
 ProductDetail.destroy_all
 Review.destroy_all
+User.destroy_all
+Account.destroy_all
 
 5.times do |index|
   f = Product.create!(
