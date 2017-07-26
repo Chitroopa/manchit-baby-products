@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="well">
+      <h2>Your cart items</h2>
+      <% if @order_items.any? %>
+        <% @order_items.each do |item| %>
+        <div class="well">
+          <h4><%= item.product.name %> </h4>
+          <p style="float: right"><%= image_tag item.product.images[0].image.url(:thumb) %></p>
+          <p> Unit Price: <%= number_to_currency item.product.price %> | Quantity: <%= item.quantity %> | Total Price: <%= number_to_currency (item.product.price * item.quantity) %></p>
+          <p><%= link_to "Delete", order_item_path(item), :data => {:confirm => "You sure?", :method => "delete"} %></p>
+        </div>
+
+        <% end %>
+        <h3 style="text-align: right">Your Total: <b><%= number_to_currency current_order.total_price %></b></h3>
+
+        <p>
+          <%= link_to "Checkout", new_charge_path,:class=> "btn btn-primary" %>
+        </p>
+      <% else %>
+        <p>Your shopping cart is empty.</p>
+      <% end %>
+    </div>
+  </div>
+
+</div>

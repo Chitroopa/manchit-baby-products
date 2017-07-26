@@ -1,0 +1,16 @@
+<h1>Reviews</h1>
+<br>
+<% if @reviews.any? %>
+  <% @reviews.each do |review| %>
+    <h4><%= review.title %></h4>
+    <%= review.content %>
+    <hr>
+    <% end %>
+  <% else %>
+  <p>
+    There are no reviews yet!
+  </p>
+  <% end %>
+
+
+  <%= link_to "Return to Product", product_path(@product)  %>

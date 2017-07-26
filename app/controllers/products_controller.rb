@@ -5,12 +5,10 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
-  def new
-  end
-
-  def edit
-  end
-
   def show
+    @order = current_order
+    @product = Product.find(params[:id])
+    @order_items = current_order.order_items.new
   end
+
 end
