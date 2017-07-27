@@ -6,7 +6,7 @@ class ChargesController < ApplicationController
 
   def create
     # Amount in cents
-    @current_order = current_order
+    @current_order = current_order  
     @amount = (@current_order.total_price * 100).to_i
 
     customer = Stripe::Customer.create(
