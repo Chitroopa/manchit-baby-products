@@ -7,6 +7,7 @@
                 <th>Status</th>
                 <th>Total Price</th>
                 <th>Number of items</th>
+                <th>See details</th>
             </tr>
         </thead>
     <% if @account_history.any? %>
@@ -18,6 +19,7 @@
         <td><%= order.status%></td>
         <td><%= number_to_currency order.total_price %></td>
         <td><%= order.no_of_items%></td>
+        <td><%= link_to 'See details..', order_item_path(order)%></td>
       </tbody>
       <% end %>
     <% end %>

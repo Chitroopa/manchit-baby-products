@@ -4,6 +4,11 @@ class OrderItemsController < ApplicationController
 
   end
 
+  def show
+    @order = OrderItem.find(params[:id])
+
+  end
+
   def create
     @order = current_order
     @item = @order.order_items.new(item_params)

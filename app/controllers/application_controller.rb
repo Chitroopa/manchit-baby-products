@@ -5,11 +5,10 @@ class ApplicationController < ActionController::Base
 
   def current_order
     if Account.find_by(user_id: current_user.id)
-
       if session[:order_id]
        order = Order.find(session[:order_id])
         if order.status != "In progress"
-          # Order.new
+          Order.new
         else
           order
         end
